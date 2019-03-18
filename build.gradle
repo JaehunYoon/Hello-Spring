@@ -27,7 +27,6 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
 	implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
 	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
@@ -35,9 +34,8 @@ dependencies {
 	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.1.1"
 	runtimeOnly 'mysql:mysql-connector-java'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	compile "org.springframework:spring-jdbc:+"
-	compile "commons-dbcp:commons-dbcp:1.4"
-	compile "mysql:mysql-connector-java:5.0.8"
+	compile "org.springframework.boot:spring-boot-starter-data-jpa"
+	compile "mysql:mysql-connector-java"
 }
 
 compileKotlin {
