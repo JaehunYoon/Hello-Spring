@@ -3,7 +3,7 @@ package kr.h4lo.study.model
 import javax.persistence.*
 
 @Entity
-@Table(name = "todo")
+@Table(name = "todos")
 data class Todo (@Id
                  @GeneratedValue(strategy = GenerationType.IDENTITY)
                  @Column(columnDefinition = "serial")
