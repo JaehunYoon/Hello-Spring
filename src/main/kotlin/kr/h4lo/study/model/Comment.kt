@@ -14,7 +14,7 @@ data class Comment (@Id
                     @Column(nullable = false)
                     val commenter: String,
                     @Column(nullable = false)
-                    val content: String,
+                    var content: String,
                     @Column(nullable = false)
                     val createdAt: String,
                     @ManyToOne(fetch = FetchType.LAZY)

@@ -13,11 +13,11 @@ import javax.persistence.*
 data class Post (@Id
                  @GeneratedValue(strategy = GenerationType.AUTO)
                  @Column(name = "post_id")
-                 val id: Int,
+                 var id: Int,
                  @Column(nullable = false)
-                 val title: String,
+                 var title: String,
                  @Column(nullable = false)
-                 val content: String,
+                 var content: String,
                  @OneToMany(mappedBy = "post", fetch = FetchType.EAGER)
                  val comment: List<Comment>?,
                  @Column(nullable = false)
