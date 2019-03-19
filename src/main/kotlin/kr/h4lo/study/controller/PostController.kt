@@ -2,8 +2,6 @@ package kr.h4lo.study.controller
 
 import kr.h4lo.study.model.Comment
 import kr.h4lo.study.model.Post
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.web.bind.annotation.*
 import java.time.Instant
 import java.time.ZoneOffset
@@ -12,8 +10,6 @@ import java.time.format.DateTimeFormatter
 @RestController
 @RequestMapping("/")
 class PostController {
-    @Autowired
-    private var template: JdbcTemplate? = null
 
     @GetMapping("posts")
     fun getPosts(): String = "test"
@@ -28,7 +24,7 @@ class PostController {
         val title = "test title"
         val content = "test content"
         val currentTime = getCurrentTime()
-        template?.update("INSERT INTO posts(id, title, content, created_at) VALUES (?)", null, title, content, currentTime)
+
         return Post(id, "test", "test", listOf(Comment("commenter", "content", currentTime), Comment("foo", "bar", currentTime)), currentTime)
     }
 
