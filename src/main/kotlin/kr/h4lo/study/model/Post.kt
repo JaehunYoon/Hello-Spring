@@ -18,7 +18,7 @@ data class Post (@Id
                  val title: String,
                  @Column(nullable = false)
                  val content: String,
-                 @OneToMany(mappedBy = "posts", fetch = FetchType.EAGER)
+                 @OneToMany(mappedBy = "post", fetch = FetchType.EAGER)
                  val comment: List<Comment>?,
                  @Column(nullable = false)
                  val createdAt: String)
