@@ -15,8 +15,8 @@ data class Comment (@Id
                     val commenter: String,
                     @Column(nullable = false)
                     var content: String,
-                    @Column(nullable = false)
-                    val createdAt: String,
-                    @ManyToOne(fetch = FetchType.LAZY)
-                    @JoinColumn(name = "post_id")
-                    val post: Post)
+                    @Column(nullable = true)
+                    val createdAt: String?,
+                    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+                    @JoinColumn(name = "post_id", nullable = false)
+                    var post: Post?)
