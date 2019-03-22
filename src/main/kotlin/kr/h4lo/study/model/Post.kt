@@ -1,5 +1,7 @@
 package kr.h4lo.study.model
 
+import org.hibernate.annotations.CreationTimestamp
+import java.util.*
 import javax.persistence.*
 
 //data class Post (val id: Int,
@@ -20,5 +22,6 @@ data class Post (@Id
                  var content: String,
 //                 @OneToMany(mappedBy = "post", fetch = FetchType.EAGER)
 //                 val comment: List<Comment>? = ArrayList(),
-                 @Column(nullable = true)
-                 var createdAt: String?)
+                 @CreationTimestamp
+//                 @DateTimeFormat
+                 var createdAt: Date?)

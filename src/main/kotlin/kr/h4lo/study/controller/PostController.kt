@@ -22,8 +22,6 @@ class PostController (val postRepository: PostRepository) {
 
     @PostMapping
     fun newPost(@RequestBody post: Post): Post {
-        var target: Post = postRepository.findById(post.id).get()
-        target.createdAt = getCurrentTime()
         postRepository.save(post)
         return post
     }
