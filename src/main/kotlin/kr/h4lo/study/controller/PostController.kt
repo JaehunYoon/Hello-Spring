@@ -4,9 +4,6 @@ import kr.h4lo.study.model.Post
 import kr.h4lo.study.repository.PostRepository
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
-import java.time.Instant
-import java.time.ZoneOffset
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 @RestController
@@ -40,7 +37,4 @@ class PostController (val postRepository: PostRepository) {
     fun deletePost(@PathVariable("postId") postId: Int) {
         postRepository.deleteById(postId)
     }
-
-//    Custom Function
-    fun getCurrentTime() = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").withZone(ZoneOffset.UTC).format(Instant.now())!!
 }
