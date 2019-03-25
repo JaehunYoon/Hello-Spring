@@ -25,17 +25,18 @@ class CommentController (val commentRepository: CommentRepository,
         }
     }
 
-    @RequestMapping(path = ["/{postId}/comments/{commentId}"], method = [RequestMethod.PATCH])
+    @RequestMapping(path = ["/posts/comments/{commentId}"], method = [RequestMethod.PATCH])
     @ResponseStatus(HttpStatus.OK)
-    fun updateComment(@PathVariable("postId") postId: Int,
-                      @PathVariable("commentId") commentId: Int,
+    fun updateComment(@PathVariable("commentId") commentId: Int,
                       @RequestBody comment: Comment) {
-// 댓글을 수정하는 기능 구현
+        commentRepository.findById(commentId).map {
+            it.content = comment.content
+            commentRepository.save(it)
+        }
     }
 
-    @RequestMapping(path = ["/{postId}/comments/{commentId}"], method = [RequestMethod.DELETE])
-    fun deleteComment(@PathVariable("postId") postId: Int,
-                      @PathVariable("commentId") commentId: Int) {
-// 댓글을 삭제하는 기능 구현
+    @RequestMapping(path = ["/posts/comments/{commentId}"], method = [RequestMethod.DELETE])
+    fun deleteComment(@PathVariable("commentId") commentId: Int) {
+        commentRepository.deleteById(commentId)
     }
 }
