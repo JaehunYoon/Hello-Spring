@@ -26,11 +26,11 @@ class PostController (val postRepository: PostRepository) {
     @RequestMapping(path = ["/{postId}"], method = [RequestMethod.PATCH])
     @ResponseStatus(HttpStatus.OK)
     fun updatePost(@PathVariable("postId") postId: Int, @RequestBody post: Post) {
-        var target: Post = postRepository.findById(postId).get()
-        target.title = post.title
-        target.content = post.content
-
-        postRepository.save(target)
+        postRepository.findById(postId).map {
+            it.title = post.title
+            it.content = post.content
+            postRepository.save(it)
+        }
     }
 
     @RequestMapping(path = ["/{postId}"], method = [RequestMethod.DELETE])
