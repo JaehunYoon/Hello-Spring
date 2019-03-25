@@ -1,5 +1,6 @@
 package kr.h4lo.study.model
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import org.hibernate.annotations.CreationTimestamp
 import org.hibernate.annotations.OnDelete
 import org.hibernate.annotations.OnDeleteAction
@@ -12,7 +13,7 @@ data class Comment (@Id
                     @GeneratedValue(strategy = GenerationType.AUTO)
                     val id: Int,
                     @Column(nullable = false)
-                    val commenter: String,
+                    val commenter: String?,
                     @Column(nullable = false)
                     var content: String,
                     @CreationTimestamp
@@ -20,4 +21,5 @@ data class Comment (@Id
                     @ManyToOne(fetch = FetchType.LAZY, optional = false)
                     @JoinColumn(name = "post_id", nullable = false)
                     @OnDelete(action = OnDeleteAction.CASCADE)
+                    @JsonIgnore
                     var post: Post?)

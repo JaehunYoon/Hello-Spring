@@ -11,8 +11,12 @@ data class Post (@Id
                  @Column(name = "post_id")
                  var id: Int,
                  @Column(nullable = false)
+                 var writer: String?,
+                 @Column(nullable = false)
                  var title: String,
                  @Column(nullable = false)
                  var content: String,
                  @CreationTimestamp
-                 var createdAt: Date?)
+                 var createdAt: Date?,
+                 @OneToMany(mappedBy = "post", fetch = FetchType.LAZY)
+                 var comment: List<Comment>?)
