@@ -6,6 +6,8 @@ import kr.h4lo.study.repository.PostRepository
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import java.util.*
+import javax.persistence.EntityManagerFactory
+import javax.persistence.Persistence
 
 @RestController
 @RequestMapping("/posts")
@@ -14,6 +16,7 @@ class CommentController (val commentRepository: CommentRepository,
     @RequestMapping(path = ["/{postId}/comments"], method = [RequestMethod.GET])
     fun getComments(@PathVariable("postId") postId: Int) {
 // 댓글을 불러오는 기능 구현
+        val emf: EntityManagerFactory = Persistence.createEntityManagerFactory("")
     }
 
     @RequestMapping(path = ["/{postId}/comments"], method = [RequestMethod.POST])
