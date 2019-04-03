@@ -25,7 +25,8 @@ class PostController (val postRepository: PostRepository) {
 
     @RequestMapping(path = ["/{postId}"], method = [RequestMethod.PATCH])
     @ResponseStatus(HttpStatus.OK)
-    fun updatePost(@PathVariable("postId") postId: Int, @RequestBody post: Post) {
+    fun updatePost(@PathVariable("postId") postId: Int,
+                   @RequestBody post: Post) {
         postRepository.findById(postId).map {
             it.title = post.title
             it.content = post.content
