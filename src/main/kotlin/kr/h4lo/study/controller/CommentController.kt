@@ -34,7 +34,7 @@ class CommentController (val commentRepository: CommentRepository,
         }
     }
 
-    @RequestMapping(path = ["/posts/comments/{commentId}"], method = [RequestMethod.PATCH])
+    @RequestMapping(path = ["/comments/{commentId}"], method = [RequestMethod.PATCH])
     @ResponseStatus(HttpStatus.OK)
     fun updateComment(@PathVariable("commentId") commentId: Int,
                       @RequestBody comment: Comment) {
@@ -44,7 +44,7 @@ class CommentController (val commentRepository: CommentRepository,
         }
     }
 
-    @RequestMapping(path = ["/posts/comments/{commentId}"], method = [RequestMethod.DELETE])
+    @RequestMapping(path = ["/comments/{commentId}"], method = [RequestMethod.DELETE])
     fun deleteComment(@PathVariable("commentId") commentId: Int) {
         commentRepository.deleteById(commentId)
     }
