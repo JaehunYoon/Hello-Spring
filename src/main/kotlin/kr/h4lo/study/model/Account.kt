@@ -10,8 +10,12 @@ data class Account (@Id
                     var id: Int? = null,
                     @Column(nullable = false, unique = true)
                     @Size(min = 3, max = 255)
-                    var userId : String,
+                    var userId : String?,
                     @Size(min = 8)
                     @Column(nullable = false)
-                    var password: String,
-                    var nickname: String)
+                    var password: String?,
+                    @Column(nullable = false)
+                    var nickname: String?,
+                    @OneToMany(cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
+                    @JoinColumn(name = "userId")
+                    var roles: List<Role>)
