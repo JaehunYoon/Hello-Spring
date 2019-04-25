@@ -18,5 +18,6 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
         http.authorizeRequests()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/**").permitAll()
+        http.csrf().disable()
     }
 }
