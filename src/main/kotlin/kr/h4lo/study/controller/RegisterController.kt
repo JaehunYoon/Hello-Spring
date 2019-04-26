@@ -12,10 +12,9 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class RegisterController (val accountRepository: AccountRepository) {
     @RequestMapping(path = ["/register"], method = [RequestMethod.POST], consumes = ["application/json"])
-    fun createAccount(@RequestBody account: Account) {
-        lateinit var role: Role
-        lateinit var passwordEncoder: BCryptPasswordEncoder
-
+    fun createAccount(@RequestBody account: Account,
+                      passwordEncoder: BCryptPasswordEncoder,
+                      role: Role) {
         account.password = passwordEncoder.encode(account.password)
         role.roleName = "STUDENT"
         account.roles = listOf(role)

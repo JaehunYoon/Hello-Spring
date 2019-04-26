@@ -8,7 +8,7 @@ import javax.validation.constraints.Size
 data class Account (@Id
                     @GeneratedValue(strategy = GenerationType.AUTO)
                     var id: Int? = null,
-                    @Column(nullable = false, unique = true)
+                    @Column(nullable = false, unique = true, name = "user_id")
                     @Size(min = 3, max = 255)
                     var userId : String?,
                     @Size(min = 8)
@@ -17,5 +17,5 @@ data class Account (@Id
                     @Column(nullable = false)
                     var nickname: String?,
                     @OneToMany(cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
-                    @JoinColumn(name = "userId")
-                    var roles: List<Role>)
+                    @JoinColumn(name = "user_id")
+                    var roles: List<Role>?)
