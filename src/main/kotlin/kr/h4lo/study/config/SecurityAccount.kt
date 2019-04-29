@@ -7,7 +7,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.User
 
 class SecurityAccount(account: Account) : User(account.userId, account.password, account.roles?.let { makeGrantedAuthority(it) }) {
-
     companion object {
         val ROLE_PREFIX = "ROLE_"
         private val serialVersionId = 1
